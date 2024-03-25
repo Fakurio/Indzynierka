@@ -1,0 +1,2 @@
+real time chat -> pusher or ably api
+notifications -> ably
