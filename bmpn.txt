@@ -1,0 +1,10 @@
+1. rejestracja - Kamil
+2. logowanie - Wojtek
+3. wylogowywanie - Wojtek
+4. dodawanie ogłoszeń - Wojtek
+5. zatwierdzanie/odrzucanie nowych ogłoszeń - Wojtek
+6. aplikowanie na ogłoszenie - Kamil
+7. filtrowanie ogłoszeń - Kamil
+8. akceptowanie/odrzucanie aplikacji kandydatów - Kamil
+9. odbieranie powiadomień gdy aplikacja na ogłoszenie zmieni status - Kamil
+10. usuwanie ogłoszeń - Wojtek
