@@ -1,2 +1,26 @@
 real time chat -> pusher or ably api
 notifications -> ably
+
+
+notification:
+Backend Implementation:
+
+Set up a WebSocket server in your backend application using a library like Socket.IO (for Node.js) or WebSocket API (for other languages/frameworks).
+
+When a user logs into the system, fetch the history of previously sent notifications from the database and send them to the user via the WebSocket connection.
+
+Listen for new notifications in real time. When a new notification is created, store it in the database and send it to all connected clients via the WebSocket connection.
+
+Frontend Implementation:
+
+Establish a WebSocket connection with the backend server when the user logs into the system.
+
+Receive the history of previously sent notifications from the backend via the WebSocket connection and display them to the user.
+
+Listen for new notifications in real time using the WebSocket connection. When a new notification is received, update the UI to display the new notification.
+
+Database Implementation:
+
+Use a database (e.g., MySQL, MongoDB) to store the history of notifications.
+
+Store each notification in the database with relevant information such as message content, sender, recipient, timestamp, etc.
