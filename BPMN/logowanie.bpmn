@@ -3,6 +3,7 @@
   <bpmn:collaboration id="Collaboration_1ff9cbp">
     <bpmn:participant id="Participant_1me68qw" name="Użytkownik" processRef="Process_19k7pmf" />
     <bpmn:participant id="Participant_1lkd4gy" name="System" processRef="Process_1mg03jo" />
+    <bpmn:messageFlow id="Flow_1eajrbv" sourceRef="Activity_17b7loq" targetRef="Activity_1jem5nj" />
     <bpmn:textAnnotation id="TextAnnotation_1fvlmuj">
       <bpmn:text>Użytkownik chce się zalogować</bpmn:text>
     </bpmn:textAnnotation>
@@ -84,11 +85,6 @@
     <bpmn:task id="Activity_1jem5nj" name="Wyświetlenie komunikatu o błędnych danych">
       <bpmn:incoming>Flow_0hreigi</bpmn:incoming>
       <bpmn:outgoing>Flow_1ckq9ha</bpmn:outgoing>
-      <bpmn:property id="Property_1sug23o" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_0w5yh6c">
-        <bpmn:sourceRef>DataObjectReference_1uj9jui</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1sug23o</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
     </bpmn:task>
     <bpmn:endEvent id="Event_1mwanbv">
       <bpmn:incoming>Flow_18opt3i</bpmn:incoming>
@@ -157,9 +153,10 @@
         <bpmn:sourceRef>DataObjectReference_0sn8rzt</bpmn:sourceRef>
         <bpmn:targetRef>Property_1h1zbk4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_13dynjw">
-        <bpmn:targetRef>DataStoreReference_0ol9g08</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_0gkcoc3">
+        <bpmn:sourceRef>DataStoreReference_0ol9g08</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1h1zbk4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_0dgv183" name="Czy wprowadzone dane są prawidłowe?">
       <bpmn:incoming>Flow_0hpxy2k</bpmn:incoming>
@@ -198,13 +195,13 @@
     <bpmn:sequenceFlow id="Flow_17inr9y" sourceRef="Activity_0dpmipl" targetRef="Event_0lhoj5g" />
     <bpmn:dataObjectReference id="DataObjectReference_0sn8rzt" name="Reguły walidacji" dataObjectRef="DataObject_0qqg200" />
     <bpmn:dataObject id="DataObject_0qqg200" />
-    <bpmn:dataObjectReference id="DataObjectReference_1uj9jui" name="Komunikaty błędów" dataObjectRef="DataObject_07p1tkl" />
-    <bpmn:dataObject id="DataObject_07p1tkl" />
     <bpmn:sequenceFlow id="Flow_1dsha7w" sourceRef="Activity_1aszesi" targetRef="Activity_0dpmipl" />
     <bpmn:task id="Activity_1aszesi" name="Utworzenie sesji użytkownika">
       <bpmn:incoming>Flow_04yv24c</bpmn:incoming>
       <bpmn:outgoing>Flow_1dsha7w</bpmn:outgoing>
     </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_1uj9jui" name="Komunikaty błędów" dataObjectRef="DataObject_07p1tkl" />
+    <bpmn:dataObject id="DataObject_07p1tkl" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1ff9cbp">
@@ -313,7 +310,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BPMNShape_1ld4ek8" bpmnElement="Participant_1lkd4gy" isHorizontal="true">
-        <dc:Bounds x="120" y="561" width="1030" height="630" />
+        <dc:Bounds x="120" y="530" width="1030" height="661" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_15u8901" bpmnElement="Lane_18pup2o" isHorizontal="true">
@@ -321,7 +318,7 @@
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1fj13de" bpmnElement="Lane_0tmdq2m" isHorizontal="true">
-        <dc:Bounds x="150" y="561" width="1000" height="300" />
+        <dc:Bounds x="150" y="530" width="1000" height="331" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataObjectReference_0s9z648_di" bpmnElement="DataObjectReference_0s9z648">
@@ -379,15 +376,15 @@
           <dc:Bounds x="220" y="1142" width="80" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataObjectReference_1uj9jui_di" bpmnElement="DataObjectReference_1uj9jui">
-        <dc:Bounds x="562" y="575" width="36" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="606" y="586.5" width="58" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1aszesi_di" bpmnElement="Activity_1aszesi">
         <dc:Bounds x="720" y="970" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_1uj9jui_di" bpmnElement="DataObjectReference_1uj9jui">
+        <dc:Bounds x="532" y="575" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="521" y="546" width="58" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_15g494r_di" bpmnElement="Flow_15g494r">
         <di:waypoint x="288" y="720" />
@@ -462,7 +459,7 @@
         <di:waypoint x="330" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_1qsqa20_di" bpmnElement="DataInputAssociation_1qsqa20">
-        <di:waypoint x="562" y="600" />
+        <di:waypoint x="532" y="600" />
         <di:waypoint x="340" y="600" />
         <di:waypoint x="340" y="270" />
       </bpmndi:BPMNEdge>
@@ -473,17 +470,13 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0j3o1ru_di" bpmnElement="DataInputAssociation_0j3o1ru">
         <di:waypoint x="1040" y="695" />
-        <di:waypoint x="1040" y="530" />
-        <di:waypoint x="910" y="530" />
+        <di:waypoint x="1040" y="510" />
+        <di:waypoint x="910" y="510" />
         <di:waypoint x="910" y="220" />
         <di:waypoint x="790" y="220" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_0w5yh6c_di" bpmnElement="DataInputAssociation_0w5yh6c">
-        <di:waypoint x="580" y="575" />
-        <di:waypoint x="580" y="410" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataInputAssociation_0vutooy_di" bpmnElement="DataInputAssociation_0vutooy">
-        <di:waypoint x="562" y="620" />
+        <di:waypoint x="532" y="620" />
         <di:waypoint x="420" y="620" />
         <di:waypoint x="420" y="680" />
       </bpmndi:BPMNEdge>
@@ -503,13 +496,9 @@
         <di:waypoint x="260" y="1010" />
         <di:waypoint x="350" y="1010" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_13dynjw_di" bpmnElement="DataOutputAssociation_13dynjw">
-        <di:waypoint x="400" y="1050" />
-        <di:waypoint x="400" y="1095" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1kcgmka_di" bpmnElement="DataOutputAssociation_1kcgmka">
-        <di:waypoint x="581" y="680" />
-        <di:waypoint x="582" y="625" />
+        <di:waypoint x="552" y="680" />
+        <di:waypoint x="552" y="625" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1pl31sw_di" bpmnElement="DataOutputAssociation_1pl31sw">
         <di:waypoint x="840" y="770" />
@@ -539,6 +528,14 @@
       <bpmndi:BPMNEdge id="Association_13w7lpp_di" bpmnElement="Association_13w7lpp">
         <di:waypoint x="270" y="738" />
         <di:waypoint x="270" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0gkcoc3_di" bpmnElement="DataInputAssociation_0gkcoc3">
+        <di:waypoint x="400" y="1095" />
+        <di:waypoint x="400" y="1050" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eajrbv_di" bpmnElement="Flow_1eajrbv">
+        <di:waypoint x="610" y="680" />
+        <di:waypoint x="610" y="410" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
