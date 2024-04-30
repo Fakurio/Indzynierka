@@ -72,7 +72,7 @@
       <bpmn:outgoing>Flow_0nk03aw</bpmn:outgoing>
       <bpmn:outgoing>Flow_0hreigi</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_0goxb40" name="Przekierowanie na stronę główną">
+    <bpmn:task id="Activity_0goxb40" name="Wyświetlenie strony głównej">
       <bpmn:incoming>Flow_0nk03aw</bpmn:incoming>
       <bpmn:outgoing>Flow_18opt3i</bpmn:outgoing>
       <bpmn:property id="Property_1yz6rhi" name="__targetRef_placeholder" />
@@ -125,6 +125,7 @@
       <bpmn:lane id="Lane_18pup2o" name="Backend">
         <bpmn:flowNodeRef>Activity_182srfc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0dgv183</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1aszesi</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:dataObjectReference id="DataObjectReference_0s9z648" name="Pusty formularz" dataObjectRef="DataObject_17k1321" />
@@ -179,7 +180,7 @@
     <bpmn:dataObjectReference id="DataObjectReference_16pdc86" name="Strona główna" dataObjectRef="DataObject_1lbyp9t" />
     <bpmn:dataObject id="DataObject_1lbyp9t" />
     <bpmn:task id="Activity_0dpmipl" name="Przekierowanie na stronę główną">
-      <bpmn:incoming>Flow_04yv24c</bpmn:incoming>
+      <bpmn:incoming>Flow_1dsha7w</bpmn:incoming>
       <bpmn:outgoing>Flow_17inr9y</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1pl31sw">
         <bpmn:targetRef>DataObjectReference_16pdc86</bpmn:targetRef>
@@ -192,13 +193,18 @@
     <bpmn:sequenceFlow id="Flow_0bpz9bh" sourceRef="Activity_0vnzn48" targetRef="Activity_182srfc" />
     <bpmn:sequenceFlow id="Flow_0hpxy2k" sourceRef="Activity_182srfc" targetRef="Gateway_0dgv183" />
     <bpmn:sequenceFlow id="Flow_1sk9jwr" name="NIE" sourceRef="Gateway_0dgv183" targetRef="Activity_17b7loq" />
-    <bpmn:sequenceFlow id="Flow_04yv24c" name="TAK" sourceRef="Gateway_0dgv183" targetRef="Activity_0dpmipl" />
+    <bpmn:sequenceFlow id="Flow_04yv24c" name="TAK" sourceRef="Gateway_0dgv183" targetRef="Activity_1aszesi" />
     <bpmn:sequenceFlow id="Flow_1lq2y6h" sourceRef="Activity_17b7loq" targetRef="Event_04b7srb" />
     <bpmn:sequenceFlow id="Flow_17inr9y" sourceRef="Activity_0dpmipl" targetRef="Event_0lhoj5g" />
     <bpmn:dataObjectReference id="DataObjectReference_0sn8rzt" name="Reguły walidacji" dataObjectRef="DataObject_0qqg200" />
     <bpmn:dataObject id="DataObject_0qqg200" />
     <bpmn:dataObjectReference id="DataObjectReference_1uj9jui" name="Komunikaty błędów" dataObjectRef="DataObject_07p1tkl" />
     <bpmn:dataObject id="DataObject_07p1tkl" />
+    <bpmn:sequenceFlow id="Flow_1dsha7w" sourceRef="Activity_1aszesi" targetRef="Activity_0dpmipl" />
+    <bpmn:task id="Activity_1aszesi" name="Utworzenie sesji użytkownika">
+      <bpmn:incoming>Flow_04yv24c</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dsha7w</bpmn:outgoing>
+    </bpmn:task>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1ff9cbp">
@@ -379,6 +385,10 @@
           <dc:Bounds x="606" y="586.5" width="58" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1aszesi_di" bpmnElement="Activity_1aszesi">
+        <dc:Bounds x="720" y="970" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_15g494r_di" bpmnElement="Flow_15g494r">
         <di:waypoint x="288" y="720" />
         <di:waypoint x="350" y="720" />
@@ -400,10 +410,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_04yv24c_di" bpmnElement="Flow_04yv24c">
         <di:waypoint x="605" y="1010" />
-        <di:waypoint x="770" y="1010" />
-        <di:waypoint x="770" y="840" />
+        <di:waypoint x="720" y="1010" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="748" y="915" width="21" height="14" />
+          <dc:Bounds x="624" y="993" width="22" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1lq2y6h_di" bpmnElement="Flow_1lq2y6h">
@@ -413,6 +422,10 @@
       <bpmndi:BPMNEdge id="Flow_17inr9y_di" bpmnElement="Flow_17inr9y">
         <di:waypoint x="840" y="800" />
         <di:waypoint x="922" y="800" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dsha7w_di" bpmnElement="Flow_1dsha7w">
+        <di:waypoint x="770" y="970" />
+        <di:waypoint x="770" y="840" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1fvlmuj_di" bpmnElement="TextAnnotation_1fvlmuj">
         <dc:Bounds x="200" y="330" width="100" height="55" />
