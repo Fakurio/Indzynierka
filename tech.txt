@@ -24,3 +24,35 @@ Database Implementation:
 Use a database (e.g., MySQL, MongoDB) to store the history of notifications.
 
 Store each notification in the database with relevant information such as message content, sender, recipient, timestamp, etc.
+
+
+chat:
+CREATE TABLE messages (
+    message_id INT PRIMARY KEY AUTO_INCREMENT,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message_text TEXT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES users(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES users(user_id)
+);
+
+SELECT m.message_id, m.sender_id, m.receiver_id, m.message_text, m.timestamp
+FROM messages m
+INNER JOIN users u_sender ON m.sender_id = u_sender.user_id
+INNER JOIN users u_receiver ON m.receiver_id = u_receiver.user_id
+WHERE (u_sender.username = 'Kamil' OR u_receiver.username = 'Kamil')
+AND (u_sender.username != 'Kamil' OR u_receiver.username != 'Kamil')
+ORDER BY m.timestamp;
+
+function groupMessages(messages, bySender = true) {
+  const groupedMessages = new Map();
+  messages.forEach(message => {
+    const key = bySender ? message.sender_id : message.receiver_id;
+    if (!groupedMessages.has(key)) {
+      groupedMessages.set(key, []);
+    }
+    groupedMessages.get(key).push(message);
+  });
+  return groupedMessages;
+}
