@@ -1,0 +1,11 @@
+Aplikacja internetowa z ogłoszeniami o pracę z branży IT:
+- logowanie użytkowników (admin, user)
+- user jednocześnie może aplikować i dodawać ogłoszenia (odzielne panele) => na wszystkich stronach to jest rozdzielone wiec sie będzie różnić
+- zalogowany użytkownik może dodawać, edytować, usuwać ogłoszenia (ogłoszenia będą auto. usuwanie po stałym okresie => do ustalenia)
+- zaawansowanie filtrowanie ogłoszeń po słowach kluczowych (przeszukiwanie tytułów ogłoszeń oraz tagów z nimi powiązanych)
+- aplikowanie na ogłoszenia z możliwością przesłania CV
+- panel z wysłanymi aplikacjami oraz ich statusem (widok pracownika)
+- panel z aplikacjami na opublikowane ogłoszenia (widok pracodawcy)
+- zapisywanie ogłoszeń w ulubionych
+- powiadomienia gdy aplikacja na ogłoszenie zmieniła status, ktoś zaaplikował na twoje ogłoszenie
+- czat pomiędzy aplikującym a ogłaszającym 
